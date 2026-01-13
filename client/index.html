@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Entrar na Dama</title>
+</head>
+<body>
+  <h1>Jogo de Dama Multiplayer</h1>
+
+  <label>Nome:</label>
+  <input type="text" id="playerName" placeholder="Seu nome" />
+  <br><br>
+
+  <label>Código da Sala:</label>
+  <input type="text" id="roomIdInput" placeholder="Ex: 1234" />
+  <br><br>
+
+  <button id="btnEnter">Entrar</button>
+
+  <script>
+    const btnEnter = document.getElementById("btnEnter");
+    const playerName = document.getElementById("playerName");
+    const roomIdInput = document.getElementById("roomIdInput");
+
+    btnEnter.onclick = () => {
+      const name = playerName.value.trim();
+      const roomId = roomIdInput.value.trim();
+
+      if (!name || !roomId) return alert("Preencha tudo");
+
+      localStorage.setItem("roomId", roomId);
+      localStorage.setItem("playerName", name);
+
+      window.location.href = "/game";
+    };
+  </script>
+</body>
+</html>
